@@ -1,9 +1,10 @@
 package com.example.restfulwebservice;
 
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 
-@RestController
+@RestController//@ResponseBody를 사용하지 않아도 반환값을 json으로 만들어줌
 public class HelloWorldController {
     //GET
     //hello-world (endpoint)
