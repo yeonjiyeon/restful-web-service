@@ -4,6 +4,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 
+import javax.validation.Valid;
 import java.net.URI;
 import java.util.List;
 
@@ -32,7 +33,7 @@ public class UserController {
     }
 
     @PostMapping("/users")
-    public ResponseEntity createUser(@RequestBody User user){
+    public ResponseEntity createUser(@Valid @RequestBody User user){
         User savedUser = service.save(user);
         
         //사용자한테 요청값 변환해 주기
@@ -53,12 +54,12 @@ public class UserController {
         }
     }
 
-//    @PutMapping("/users/{id}")
-//    public void updateUser(@PathVariable int id){
-//        User user = service.updateById(id);
-//
-//        if (user == null){
-//            throw new UserNotFoundException(String.format("ID[%s] not found", id));
-//        }
-//    }
+    @PutMapping("/users/{id}")
+    public void updateUser(@PathVariable int id,@RequestBody User user){
+        user = service.updateById(id);
+
+        if (user == null){
+            throw new UserNotFoundException(String.format("ID[%s] not found", id));
+        }
+    }
 }
