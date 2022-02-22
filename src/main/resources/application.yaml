@@ -12,6 +12,10 @@ spring:
   mvc:
     pathmatch:
       matching-strategy: ant_path_matcher
+  security:
+    user:
+      name: username
+      password: passwOrd
 
 management:
   endpoints:
@@ -19,3 +23,5 @@ management:
       exposure:
           #        include: "*"
         include=env,health,metrics:
+
+
